@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times do 
+item = Item.new(:name => Faker::Music::Opera.verdi, :description => )
+end
