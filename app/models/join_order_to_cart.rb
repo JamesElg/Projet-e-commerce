@@ -1,0 +1,2 @@
+class JoinOrderToCart < ApplicationRecord
+end
