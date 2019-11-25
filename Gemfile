@@ -71,3 +71,4 @@ gem "letter_opener", "~> 1.7"
 gem "colorize", "~> 0.8.1"
 gem "table_print"
 gem 'bcrypt'
+gem 'faker'
