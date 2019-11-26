@@ -2,4 +2,8 @@
 
 <%= link_to 'Edit', edit_item_path(@item), class:'btn btn-outline-dark' %> |
 <%= link_to 'Back', items_path, class:'btn btn-outline-dark' %>
+<<<<<<< HEAD
 <%= link_to 'Add to Cart', user_carts_path(:current_user),action: :item_id => params(:id)  method: :post ,  class:'btn btn-outline-dark' %>
+=======
+<%= link_to 'Add to Cart', user_cart_path(current_user.id,params[:id]), method: :put ,  class:'btn btn-outline-dark' %>
+>>>>>>> 045d7d40416523e3f4c3acf421d3c23268af2ce2
