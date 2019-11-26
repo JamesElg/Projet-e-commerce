@@ -52,3 +52,19 @@ a:hover {
 .navbar-brand {
   font-family: 'Pacifico', cursive;
 }
+
+footer {
+  background-color: none;
+  width: 100%;
+  bottom: 10px;
+}
+
+.notice {
+  text-align: center;
+  color: #01d28e;
+}
+
+.alert {
+  text-align: center;
+  color: #ef4339;
+}
