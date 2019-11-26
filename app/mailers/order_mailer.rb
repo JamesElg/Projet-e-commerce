@@ -13,4 +13,13 @@ class OrderMailer < ApplicationMailer
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
     mail(to: @user.email, subject: 'Votre commande #'+order.id.to_s)
   end
+
+  def admin_order_email(order,admin)
+    @user = User.find(order.user_id)
+    @order = order
+    @items = order.items
+
+    mail(to: admin.email, subject: 'Nouvelle commande #'+order.id.to_s)
+
+  end
 end
