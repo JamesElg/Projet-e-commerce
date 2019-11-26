@@ -52,3 +52,13 @@ a:hover {
 .navbar-brand {
   font-family: 'Pacifico', cursive;
 }
+
+.cart-button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
