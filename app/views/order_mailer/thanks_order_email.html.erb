@@ -9,7 +9,12 @@
       <%= @user.first_name %> Merci de votre confiance. <br> Nous vous confirmons l'envoi de vos articles :
     </p>
     <br>
-    
+    <ul>
+      <% @items.each do |item| %>
+        <li>item.name</li>
+      <% end %>
+    </ul>
+
     <p>
       Pour accéder à ton espace client, connectez-vous via : <%= @url %>.
     </p>
