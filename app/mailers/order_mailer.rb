@@ -5,6 +5,7 @@ class OrderMailer < ApplicationMailer
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
     @user = User.find(order.user_id)
     @order = order
+    @items = order.items
 
     #on définit une variable @url qu'on utilisera dans la view d’e-mail
     @url  = 'http://bryan-ajaro.fr/login'
