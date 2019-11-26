@@ -1,4 +1,6 @@
   <!-- Page Content -->
+
+
   <div class="container">
 
     <div class="row">
@@ -45,11 +47,15 @@
         </div>
 
         <div class="row">
-          <% Item.all.each do |i| %>
+          <% Item.all.order("id ASC").each do |i| %>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
+              <%if i.photo.attached?%>
+              <%= image_tag i.photo, alt: 'photo' %>
+              <%else%>
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <%end%>
               <div class="card-body">
                 <h4 class="card-title">
                   <%= link_to i.name, i %>
@@ -60,7 +66,14 @@
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>
+
+              <%= form_tag item_path(i.id), method: "put", multipart: true do %>
+                <%= file_field_tag :photo %>
+                <%= submit_tag "uploader l'avatar" %>
+              <% end %>
+
             </div>
+
           </div>
 
           <% end %>
@@ -73,5 +86,3 @@
     <!-- /.row -->
   </div>
   <!-- /.container -->
-
-<p id="notice"><%= notice %></p>
