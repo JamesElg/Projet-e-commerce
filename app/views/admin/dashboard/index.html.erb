@@ -4,7 +4,7 @@
 		<div class="form_main">
                 <h4 class="heading"><strong>Ajouter </strong> une oeuvre <span></span></h4>
                 <div class="form">
-                <%= form_tag item_path(i.id), method: "put", multipart: true do %>
+                <%= form_tag idtem_path(i.id), method: "post", multipart: true do %>
                     <input type="text" required="" placeholder="Titre de l'oeuvre" value="" name="name" class="txt">
                     <input type="text" required="" placeholder="Prix" value="" name="mob" class="txt">
                 	 <textarea placeholder="Description" name="mess" type="text" class="txt_3"></textarea>
