@@ -19,7 +19,8 @@
 </head>
 
 <body>
-
+  <%= button_to "Log In", new_user_session_path, method: "new"%>
+  <%= button_to "Log Out", destroy_user_session_path, method: "delete"%>
 
   <!-- Page Content -->
   <div class="container">
@@ -99,7 +100,7 @@
 
 
 
-</html>
+  </html>
 
 <!-- 
 <p id="notice"><%= notice %></p>
