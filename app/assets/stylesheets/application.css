@@ -83,17 +83,6 @@ img {
   height: auto;
 }
 
-form_main {
-    width: 100%;
-}
-.form_main h4 {
-    font-family: roboto;
-    font-size: 20px;
-    font-weight: 300;
-    margin-bottom: 15px;
-    margin-top: 20px;
-    text-transform: uppercase;
-}
 .heading {
     border-bottom: 1px solid #fcab0e;
     padding-bottom: 9px;
@@ -107,10 +96,7 @@ form_main {
     position: absolute;
     width: 75px;
 }
-.form {
-    border-radius: 7px;
-    padding: 6px;
-}
+
 .txt[type="text"] {
     border: 1px solid #ccc;
     margin: 10px 0;
