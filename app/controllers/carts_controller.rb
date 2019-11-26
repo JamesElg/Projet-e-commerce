@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:show, :edit, :destroy]
 
   # GET /carts
   # GET /carts.json
@@ -25,8 +25,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    puts "eeaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    puts params[:car]
+
     @cart = Cart.new(:user_id => current_user.id, :item_id => params[:id])
 
 
@@ -44,9 +43,10 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
+    @cart = Cart.new(:user_id => current_user.id, :item_id => params[:id])
     respond_to do |format|
-      if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+      if @cart.save(cart_params)
+        format.html { redirect_to user_carts_path(current_user.id), notice: 'Cart was successfully updated.' }
         format.json { render :show, status: :ok, location: @cart }
       else
         format.html { render :edit }
