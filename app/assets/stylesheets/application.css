@@ -53,6 +53,21 @@ a:hover {
   font-family: 'Pacifico', cursive;
 }
 
+footer {
+  background-color: none;
+  width: 100%;
+  bottom: 10px;
+}
+
+.notice {
+  text-align: center;
+  color: #01d28e;
+}
+
+.alert {
+  text-align: center;
+  color: #ef4339;
+=======
 .cart-button {
 	background: none;
 	color: inherit;
@@ -91,7 +106,7 @@ form_main {
     left: 0;
     position: absolute;
     width: 75px;
-}   
+}
 .form {
     border-radius: 7px;
     padding: 6px;

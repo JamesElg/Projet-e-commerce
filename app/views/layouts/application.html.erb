@@ -21,7 +21,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-white">
     <div class="container">
-      <a class="navbar-brand" style="color: black" href="#">Bryan Ajaro Gallery</a>
+      <a class="navbar-brand" style="color: black" <%= link_to "Bryan Ajaro Gallery", items_path %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -37,7 +37,10 @@
             <a class="nav-link" style="color: black" href="#">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: black" href="#">Log In/Sign Up</a>
+            <a class="nav-link" style="color: black" <%= link_to "Log in", new_user_session_path %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: black" <%= link_to "Log Out", destroy_user_session_path, method: "delete"%></a>
           </li>
         </ul>
       </div>
@@ -49,9 +52,9 @@
   <%= yield %>
 
   <!-- Footer -->
-  <footer class="py-5">
+  <footer>
     <div class="container">
-      <p class="m-0 text-center text-black">Copyright &copy; Bryan Ajaro 2019</p>
+        <p class="m-0 text-center text-black">Copyright &copy; Bryan Ajaro 2019</p>
     </div>
     <!-- /.container -->
   </footer>
