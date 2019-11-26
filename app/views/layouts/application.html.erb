@@ -37,7 +37,9 @@
             <a class="nav-link" style="color: black" href="#">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: black" href="#">Log In/Sign Up</a>
+          <%= link_to "Log in", new_user_session_path, method: "POST" %>
+          <li class="nav-item">
+          <a class="nav-link" style="color: black" href="<%= link_to "Log Out", destroy_user_session_path, method: "delete" %></a>
           </li>
         </ul>
       </div>
