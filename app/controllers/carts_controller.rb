@@ -25,12 +25,14 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(:user_id => current_user.id, :item => params[:items])
+    puts "eeaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    puts params[:car]
+    @cart = Cart.new(:user_id => current_user.id, :item_id => params[:id])
 
 
     respond_to do |format|
       if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+        format.html { redirect_to user_carts_path(current_user.id), notice: 'Cart was successfully created.' }
         format.json { render :show, status: :created, location: @cart }
       else
         format.html { render :new }
@@ -58,7 +60,7 @@ class CartsController < ApplicationController
   def destroy
     @cart.destroy
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to user_carts_path(current_user.id), notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
