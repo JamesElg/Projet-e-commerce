@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :orders
   devise_for :users
-  resources :users do
-  	resources :carts
+
+  Rails.application.routes.draw do
+    resources :users do
+  	 resources :carts
+    end
   end
 
   namespace :admin do

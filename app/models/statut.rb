@@ -1,0 +1,2 @@
+class Statut < ApplicationRecord
+end
