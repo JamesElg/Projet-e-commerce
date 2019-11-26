@@ -72,3 +72,4 @@ gem "colorize", "~> 0.8.1"
 gem "table_print"
 gem 'bcrypt'
 gem 'faker'
+gem "aws-sdk", "~> 3.0"
