@@ -66,11 +66,14 @@
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>
+
+              <%= form_tag item_path(i.id), method: "put", multipart: true do %>
+                <%= file_field_tag :photo %>
+                <%= submit_tag "uploader l'avatar" %>
+              <% end %>
+
             </div>
-            <%= form_tag item_path(i.id), method: "put", multipart: true do %>
-            <%= file_field_tag :photo %>
-            <%= submit_tag "uploader l'avatar" %>
-            <% end %>
+
 
           </div>
 
@@ -86,4 +89,3 @@
   <!-- /.container -->
 
   <p id="notice"><%= notice %></p>
-
