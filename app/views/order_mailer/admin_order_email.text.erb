@@ -1,0 +1,12 @@
+Confirmation de commande #<%= @order.id %>!
+==========================================================
+
+Envoi des articles suivants:
+
+<% @items.each do |item| %>
+  - item.name
+<% end %>
+
+Adresse : <%= @order.address %>
+
+À très vite sur bryan-ajaro.fr !

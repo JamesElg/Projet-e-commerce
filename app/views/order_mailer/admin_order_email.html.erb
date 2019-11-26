@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Confirmation de commande #<%= @order.id %></h1>
+    <p>
+      Envoi des articles de vos articles :
+    </p>
+    <ul>
+      <% @items.each do |item| %>
+        <li>item.name</li>
+      <% end %>
+    </ul>
+    <p>adresse : <%= @order.address %> </p>
+    
+  </body>
+</html>
