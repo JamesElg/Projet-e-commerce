@@ -12,3 +12,7 @@
 item = Item.create(:name => Faker::Space.nasa_space_craft, :description => Faker::Lorem.paragraph, :price => rand(10..500) + 0.99)
 puts item
 end
+
+statut1 = Statut.create(:name => "Currently being prepared" )
+statut2 = Statut.create(:name => "Shipped")
+statut3 = Statut.create(:name => "Delivered")

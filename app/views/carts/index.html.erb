@@ -46,7 +46,23 @@
     </div>
 
 
-
+    <%= form_tag orders_path, method: "post", remote: true do %>
+    <input name= "statut_id" value= 1 type="hidden">
+    <input name= "user_id" value= "<%= current_user.id %>" type="hidden">
+    <input name= "adress" value= "21 Rue Richard Lenoir" type="hidden">
+    <%= submit_tag "Order" %>
+    <% end %>
+    
+    <script> stripe.redirectToCheckout({
+  // Make the id field from the Checkout Session creation API response
+  // available to this file, so you can provide it as parameter here
+  // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+  sessionId: '{{CHECKOUT_SESSION_ID}}'
+}).then(function (result) {
+  // If `redirectToCheckout` fails due to a browser or network
+  // error, display the localized error message to your customer
+  // using `result.error.message`.
+});  </script>
   </tbody>
 </table>
 

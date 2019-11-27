@@ -11,9 +11,9 @@
 		<div class="row">
 
 			<div class="col-lg-3">
-				<h1 class="my-4">Shop Name</h1>
+				<h2 class="my-4"><%= Item.find(params[:id]).name %></h2>
 				<div class="list-group">
-					<a href="#" class="list-group-item active">Category 1</a>
+					<a href="#" class="list-group-item">Category 1</a>
 					<a href="#" class="list-group-item">Category 2</a>
 					<a href="#" class="list-group-item">Category 3</a>
 				</div>
@@ -30,10 +30,12 @@
 					<%end%>
 					<div class="card-body">
 						<h3 class="card-title"><%= Item.find(params[:id]).name %></h3>
-						<h4>$24.99</h4>
 						<p class="card-text"><%= Item.find(params[:id]).description %></p>
-						<span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-						4.0 stars
+            <div class="align">
+  						<span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734; 4.0 stars</span>
+
+              <p><%= Item.find(params[:id]).price %> $</p>
+            </div>
 					</div>
 					<div class="col mb-3">
 						<% if current_user.is_admin? %>

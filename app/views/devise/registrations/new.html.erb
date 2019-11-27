@@ -1,34 +1,59 @@
-<br>
-<div class="container d-flex flex-column align-items-center ">
+<div class="container-login100">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+      <br>
+      <div class="login100-form validate-form">
+        <span class="login100-form-title p-b-37">
+          Sign Up
+        </span>
+        <br>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+        
+        <br>
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+        </div><br>
 
-    <h2>Sign up</h2><br>
+        <div class="field">
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+        </div><br>
 
-  <div class="">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
+        </div><br>
 
-      <div class="field">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
-      </div><br>
-
-      <div class="field">
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
-      </div><br>
-
-      <div class="field">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
-      </div><br>
-
-      <div class="actions">
-        <%= f.submit "Launch my account", class: "btn" %>
+        <div class="container-login100-form-btn">
+          <button class="animatedButton" type="submit" style="vertical-align:middle"><span>Join us</span></button>
+        </div>
+        <% end %>
+        <div class="container-login100">
+          <span style="color: white;">
+            Or sign up with
+          </span>
+        </div>
+        <br>
+        <div class="flex-c p-b-112">
+          <div class="row">
+            <a href="https://www.facebook.com/" class="login100-social-item" style="color: midnightblue;">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.gmail.com" class="login100-social-item">
+              <i class="fab fa-google"></i>
+            </a>
+          </div>
+        </div>
+        <div class="container-login100">
+          <span style="color: white;">
+            Already an account ?
+          </span>
+          <a href="<%= render "devise/shared/links" %>" style="margin-left: 8px;">
+            Sign in
+          </a>
+        </div>
+        <br>
       </div>
-    <% end %>
-    <br>
-    <div class="text-center">
-    <%= render "devise/shared/links" %>
+    </div>
   </div>
-  </div>
-</div>
