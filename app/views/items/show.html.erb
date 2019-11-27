@@ -2,11 +2,11 @@
 <p id="notice"><%= notice %></p>
 
 
-<%= link_to 'Edit', edit_item_path(@item), class:'btn btn-outline-dark' %> 
-<%= link_to 'Back', items_path, class:'btn btn-outline-dark' %>
+<%= link_to 'Edit', edit_item_path(@item), class:'btn btn' %> 
+<%= link_to 'Back', items_path, class:'btn btn' %>
 <% unless user_signed_in? %>
-<%= link_to 'Add to Cart', new_user_session_path, class:'btn btn-outline-dark' %>
+<%= link_to 'Add to Cart', new_user_session_path, class:'btn btn' %>
 <% else %>
-<%= link_to 'Add to Cart', user_cart_path(current_user.id,params[:id]), method: :put ,  class:'btn btn-outline-dark' %>
+<%= link_to 'Add to Cart', user_cart_path(current_user.id,params[:id]), method: :put ,  class:'btn btn' %>
 <% end %>
 
