@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.create(user_id: current_user.id, address: "21 Rue Richard Lenoir", statut_id: 1 )
-    Stripe
+    stripe
     join_order_to_carts
     empty_cart
 
@@ -78,8 +78,11 @@ class OrdersController < ApplicationController
     private
 
     def stripe 
+      puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      Stripe.api_key = 'sk_test_21TiEwcaDyLdlIZ5KpPKCh9o00TpyciS6q'
 
           session = Stripe::Checkout::Session.create(
+
       payment_method_types: ['card'],
       line_items: [{
         name: 'T-shirt',
