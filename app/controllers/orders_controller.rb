@@ -102,8 +102,6 @@ class OrdersController < ApplicationController
     end
 
     def empty_cart
-        Cart.where(user_id: current_user.id).each do |cart|
-          Item.find(cart.item_id.to_i).destroy
-        end
+        Cart.where(user_id: current_user.id).destroy_all
       end
 end
