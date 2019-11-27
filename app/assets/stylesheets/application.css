@@ -338,8 +338,7 @@ blockquote {
  color: black ; /* Text color */
  padding: 20px; /* Some padding */
  border-radius: 50px; /* Rounded corners */
- font-size: 24px; /* Increase font size */
- transition: 0.3s;
+ transition: 0.8s;
  box-shadow: 0 10px 30px 0px rgba(215,209,201, 1);
 }
 
