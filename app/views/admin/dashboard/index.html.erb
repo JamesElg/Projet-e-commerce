@@ -37,43 +37,86 @@
 		</div>
 	</div>
 
-	<% Item.all.each do |item| %>
-	<div class="container-fluid">
-		<div class="row shadow-sm bg-white justify-content-center rounded-sm pb-3 pt-3 pl-3 mb-3 text-dark border pr-0 m-0">
-			<div class="col-12 d-flex justify-content-between align-items-center text-black-50 m-0 p-0">
-				<%= Item.find(item.id).name %>
-				<%= "#{Item.find(item.id).price} $" %>	
-				<div>
-				<%= link_to "", item_path(item.id), method: "delete", :class => "fas fa-times fa-2x spec mr-3" %>
-				<%= link_to "", edit_item_path(item.id), method: "get", :class => "fas fa-pencil-alt fa-2x spec mr-3" %>
+
+
+
+	<div id="accordion">
+		<div class="card mb-3">
+			<div class="card-header" id="headingOne">
+				<h5 class="mb-0">
+					<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						All items
+					</button>
+				</h5>
+			</div>
+
+			<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+				<div class="card-body">
+					<% Item.all.each do |item| %>
+					<div class="container-fluid">
+						<div class="row shadow-sm bg-white justify-content-center rounded-sm pb-3 pt-3 pl-3 mb-3 text-dark border pr-0 m-0">
+							<div class="col-12 d-flex justify-content-between align-items-center text-black-50 m-0 p-0">
+								<div>
+								<%if item.photo.attached?%>
+								<%= image_tag item.photo, alt: 'photo' %>
+								<%else%>
+								<img src="http://placehold.it/700x400" alt=""></a>
+								<%end%>
+								<%= Item.find(item.id).name %>
+								<%= "#{Item.find(item.id).price} $" %>	
+								</div>
+								<div>
+									<%= link_to "", item_path(item.id), method: "delete", :class => "fas fa-times fa-2x spec mr-3" %>
+									<%= link_to "", edit_item_path(item.id), method: "get", :class => "fas fa-pencil-alt fa-2x spec mr-3" %>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-header" id="headingTwo">
+				<h5 class="mb-0">
+					<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						All User
+					</button>
+				</h5>
+			</div>
+			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+				<div class="card-body">
+					<% User.all.each do |user| %>
+					<div class="container-fluid">
+						<div class="row shadow-sm bg-white justify-content-center rounded-sm pb-3 pt-3 pl-3 mb-3 text-dark border pr-0 m-0">
+							<div class="col-12 d-flex justify-content-between align-items-center text-black-50 m-0 p-0">
+								<%= User.find(user.id).first_name %>
+								<%= 	User.find(user.id).last_name %>	
+								<div class="d-flex justify-content-between align-items-center">
+
+									<% if user.is_admin? %>
+									<span> Admin</span>
+									<% else %>
+									<span> User</span>
+									<% end %>
+
+									<%= link_to "", user_path(user.id), method: "delete", :class => "ml-3 fas fa-times fa-2x spec mr-3" %>
+									<%= link_to "", edit_user_path(user.id), method: "get", :class => "fas fa-pencil-alt fa-2x spec mr-3" %>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<% end %>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<% end %>
-
-	<% User.all.each do |user| %>
-	<div class="container-fluid">
-		<div class="row shadow-sm bg-white justify-content-center rounded-sm pb-3 pt-3 pl-3 mb-3 text-dark border pr-0 m-0">
-			<div class="col-12 d-flex justify-content-between align-items-center text-black-50 m-0 p-0">
-				<%= User.find(user.id).first_name %>
-				<%= User.find(user.id).last_name %>	
-				<div class="d-flex justify-content-between align-items-center">
-
-				<% if user.is_admin? %>
-				<span> Admin</span>
-				<% else %>
-				<span> User</span>
-				<% end %>
-
-				<%= link_to "", user_path(user.id), method: "delete", :class => "ml-3 fas fa-times fa-2x spec mr-3" %>
-				<%= link_to "", edit_user_path(user.id), method: "get", :class => "fas fa-pencil-alt fa-2x spec mr-3" %>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<% end %>
-
 </div>
+
+<style type="text/css">
+	img {
+		width: 50px;
+		height: auto;
+	}
+</style>
