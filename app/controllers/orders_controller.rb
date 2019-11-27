@@ -24,7 +24,8 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = Order.create(user_id: current_user.id, address: "21 Rue Richard Lenoir")
+    Stripe
 
     respond_to do |format|
       if @order.save
@@ -69,7 +70,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:status, :adress)
+      params.require(:order).permit(:status, :adress, :user_id)
     end
 
     private
@@ -89,8 +90,10 @@ class OrdersController < ApplicationController
       success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'https://example.com/cancel',
     )
-    )
+    end
 
+    def Cart_Order
+      
     end
 
 end
