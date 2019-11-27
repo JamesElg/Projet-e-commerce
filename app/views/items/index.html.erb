@@ -41,9 +41,9 @@
       <!-- /.col-lg-9 -->
     </div>
     <!-- /.row -->
-
-    <div class="card-columns">
-      <% Item.all.order("id ASC").each do |i| %>
+    <br>
+  <div class="card-columns">
+    <% Item.all.order("id ASC").each do |i| %>
 
       <div class="container">
         <div class="card">
@@ -62,15 +62,19 @@
             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
             <p><%= i.price %> $</p>
           </div>
+          <% if current_user != nil %>
           <% if current_user.is_admin? %>
-            <%= form_tag item_path(i.id), method: "put", multipart: true do %>
-            <%= file_field_tag :photo %>
-            <%= submit_tag "uploader l'avatar" %>
-            <% end %>
+          <%= form_tag item_path(i.id), method: "put", multipart: true do %>
+          <%= file_field_tag :photo %>
+          <%= submit_tag "uploader l'avatar" %>
+          <% end %>
+          <% end %>
           <% end %>
         </div>
       </div>
-      <% end %>
+<% end %>
     </div>
   </div>
+  
+  
   <!-- /.container -->
