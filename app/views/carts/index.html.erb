@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<div class="container">
 <h1>Carts</h1>
 
 <table>
@@ -31,6 +30,51 @@
       <h3> Quantity <%= quantity %> </h3>
     </div>
 
+<<<<<<< HEAD
    <%=  %>
 
   
+=======
+    <%= form_tag orders_path, method: "post" do %>
+
+      <article>
+
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <label class="amount">
+          <span>Amount: <%= total.to_f %>$</span>
+        </label>
+      </article>
+
+
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description="Paiement Bryan Ajaro Gallery"
+    data-amount="<%= total*100 %>"
+    data-locale="auto">
+    </script>
+    <input name= "statut_id" value= 1 type="hidden">
+    <input name= "user_id" value= "<%= current_user.id %>" type="hidden">
+    <br>
+    <br>
+
+    <% end %>
+
+    <% if flash[:success].present? %>
+    <div class="alert alert-success" role="alert">
+      <%=flash[:success]%>
+
+    </div>
+    <% end %>
+
+  </tbody>
+</table>
+
+<br>
+
+</div>
+>>>>>>> development
