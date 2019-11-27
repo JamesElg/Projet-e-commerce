@@ -1,17 +1,79 @@
 <div class="container-fluid">
-	<div class="row d-flex justify-content-center">
-    <div class="col-10">
-		<div class="form_main">
-                <h4 class="heading"><strong>Ajouter </strong> une oeuvre <span></span></h4>
-                <div class="form">
-                <%= form_tag idtem_path(i.id), method: "post", multipart: true do %>
-                    <input type="text" required="" placeholder="Titre de l'oeuvre" value="" name="name" class="txt">
-                    <input type="text" required="" placeholder="Prix" value="" name="mob" class="txt">
-                	 <textarea placeholder="Description" name="mess" type="text" class="txt_3"></textarea>
-                     <input type="submit" value="submit" name="submit" class="txt2">
-                <% end %>
-            </div>
-            </div>
-            </div>
+	<div class="row">
+		<div class="col-10">
+			<div class="form_main">
+				<h4 class="heading mb-3"><strong>Ajouter </strong> une oeuvre <span></span></h4>
+				<%= form_tag items_path, method: "post", multipart: true do %>
+				<div class="row d-flex align-items-start flex-column">
+
+					<div class="input-group mb-3">
+						<input type="text" name="name" class="form-control" placeholder="Titre" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+
+					<div class="input-group mb-3">
+						<input type="text" name="price" class="form-control" placeholder="Prix" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+
+					<div class="input-group mb-3">
+						<input type="text" name="description" class="form-control" placeholder="description" aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Upload</span>
+						</div>
+						<div class="custom-file">
+							<%= file_field_tag :photo, class: "custom-file-input" %>
+							<label class="custom-file-label" for="inputGroupFile01">Choisir un fichier</label>
+						</div>
+					</div>
+
+					<input type="submit" value="submit" name="submit" class="txt2 btn btn-dark">
+				</div>
+				<% end %>
+
+			</div>
+		</div>
 	</div>
+
+	<% Item.all.each do |item| %>
+	<div class="container-fluid">
+		<div class="row shadow-sm bg-white justify-content-center rounded-sm pb-3 pt-3 pl-3 mb-3 text-dark border pr-0 m-0">
+			<div class="col-12 d-flex justify-content-between align-items-center text-black-50 m-0 p-0">
+				<%= Item.find(item.id).name %>
+				<%= "#{Item.find(item.id).price} $" %>	
+				<div>
+				<%= link_to "", item_path(item.id), method: "delete", :class => "fas fa-times fa-2x spec mr-3" %>
+				<%= link_to "", edit_item_path(item.id), method: "get", :class => "fas fa-pencil-alt fa-2x spec mr-3" %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<% end %>
+
+	<% User.all.each do |user| %>
+	<div class="container-fluid">
+		<div class="row shadow-sm bg-white justify-content-center rounded-sm pb-3 pt-3 pl-3 mb-3 text-dark border pr-0 m-0">
+			<div class="col-12 d-flex justify-content-between align-items-center text-black-50 m-0 p-0">
+				<%= User.find(user.id).first_name %>
+				<%= User.find(user.id).last_name %>	
+				<div class="d-flex justify-content-between align-items-center">
+
+				<% if user.is_admin? %>
+				<span> Admin</span>
+				<% else %>
+				<span> User</span>
+				<% end %>
+
+				<%= link_to "", user_path(user.id), method: "delete", :class => "ml-3 fas fa-times fa-2x spec mr-3" %>
+				<%= link_to "", edit_user_path(user.id), method: "get", :class => "fas fa-pencil-alt fa-2x spec mr-3" %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<% end %>
+
 </div>
