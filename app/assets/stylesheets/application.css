@@ -813,8 +813,3 @@ img {
 
 }
 
-a:hover { 
-  text-decoration: none!important;
-  color: #8a00d4!important;
- flex-direction: row;
-}
