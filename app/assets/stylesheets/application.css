@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  */
-body {
+ body {
   cursor: crosshair;
   font-family: 'DM Sans', sans-serif;
   width: 100%;
@@ -46,10 +46,10 @@ footer {
 }
 
 a {
-   text-decoration: none;
-   cursor: crosshair;
-   color: #000000;
- }
+ text-decoration: none;
+ cursor: crosshair;
+ color: #000000;
+}
 
 p {
  margin-left: 5%;
@@ -764,9 +764,9 @@ iframe {
  height: 100%;
  color: transparent;
  -webkit-user-select: none;
-    -moz-user-select: none;
-     -ms-user-select: none;
-         user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
  background-color: hsl(240, 1%, 83%);
  background-color: var(--color-contrast-low);
  border-radius: inherit;
@@ -801,4 +801,14 @@ iframe {
   margin: 15px;
   justify-content: space-around;
   align-items: baseline;
+}
+
+img { 
+  object-fit: cover;
+  max-width: 100%;
+  max-height: auto;
+  vertical-align: middle;
+  border-style: none;
+  
+
 }

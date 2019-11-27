@@ -24,6 +24,10 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    var = item_params
+    puts var
+    puts params[:name]
     @item = Item.new(item_params)
 
     respond_to do |format|
@@ -70,6 +74,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.fetch(:item, {})
+      params.permit(:name, :price, :description, :photo)
     end
 end
