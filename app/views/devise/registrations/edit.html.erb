@@ -1,5 +1,5 @@
 <div class="container-login100">
-  <div class="big-wrap p-l-75 p-r-75 p-t-80 p-b-30">
+  <div class="big-wrap p-l-55 p-r-55 p-t-80 p-b-30">
     <br><br>
     <span class="login100-form-title p-b-37">
       Edit your profile
@@ -10,16 +10,15 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "First name" %>
+      <div class="align">
+        <div class="field">
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "First name" %>
+        </div>
+      
+        <div class="field">
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "Last name" %>
+        </div>
       </div>
-      <br>
-
-      <div class="field">
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "Last name" %>
-      </div>
-      <br><br>
-
       <div class="field">
         <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control", placeholder: "Phone number" %>
       </div>
@@ -34,17 +33,17 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
-      <div class="field">
-        <%= f.label :password %> <i></i><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder:"(leave blank if you don't want to change it)" %>
-        <% if @minimum_password_length %>
-          <em><%= @minimum_password_length %> characters minimum</em>
-        <% end %>
+      <div class="align">
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder:"(leave blank if you don't want to change it)" %>
+          <% if @minimum_password_length %>
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div>
+        <div class="field">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
+        </div>
       </div>
-      <div class="field">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
-      </div>
-      <br>
 
       <div class="field">
         <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "(we need your current password to confirm your changes)" %>
