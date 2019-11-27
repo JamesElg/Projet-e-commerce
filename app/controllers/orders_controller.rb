@@ -24,8 +24,10 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.create(user_id: current_user.id, address: "21 Rue Richard Lenoir")
+    @order = Order.create(user_id: current_user.id, address: "21 Rue Richard Lenoir", statut_id: 1 )
     Stripe
+    join_order_to_carts
+    empty_cart
 
     respond_to do |format|
       if @order.save
@@ -92,8 +94,16 @@ class OrdersController < ApplicationController
     )
     end
 
-    def Cart_Order
-      
+    def join_order_to_carts
+
+    Cart.where(user_id: current_user.id).each do |cart| 
+      JoinOrderToCart.create(item_id: Item.find(cart.item_id.to_i).id  ,order_id: Order.last.id )
+      end
     end
 
+    def empty_cart
+        Cart.where(user_id: current_user.id).each do |cart|
+          Item.find(cart.item_id.to_i).destroy
+        end
+      end
 end
