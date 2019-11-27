@@ -799,5 +799,6 @@ iframe {
   flex-direction: row;
   margin: 15px;
   justify-content: space-around;
-  align-items: baseline;
+  align-content: center
+
 }
