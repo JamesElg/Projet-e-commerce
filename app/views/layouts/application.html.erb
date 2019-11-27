@@ -29,18 +29,26 @@
   <div id="mySidenav" class="sidenav">
     <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
 
+    <% if user_signed_in? %>
     <a href="<%= edit_user_registration_path %>">Profile</a>
     <hr>
     <a href="<%= items_path %>">Home</a>
     <hr>
+    <a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a>
+    <hr>
+    <a href="contact.html">Contact</a>
+
+    <% else %>
     <a href="<%= new_user_session_path %>">Log in</a>
     <hr>
     <a href="<%= new_user_registration_path %>">Sign up</a>
     <hr>
-    <a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a>
+    <a href="<%= items_path %>">Home</a>
     <hr>
-        <a href="contact.html">Contact</a>
+    <a href="contact.html">Contact</a>
+    <% end %>
 
+<s></s>
       <div class="social">
       <a href="https://www.facebook.com" target="_blank">
         <i class="fab fa-facebook-f"></i>
@@ -59,7 +67,7 @@
 </nav>
 
 
-<div class="myBtn d-flex justify-content-center align-items-center" onclick="topFunction()" id="myBtn" title="Go to top"><span>^</span></div>
+<div class="myBtn d-flex justify-content-center align-items-center" onclick="topFunction()" id="myBtn" title="Go to top"><span><img src="assets/navigate-up-arrow.png" alt=""></span></div>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
