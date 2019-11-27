@@ -8,7 +8,7 @@
         <br>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-        
+
         <br>
         <div class="field">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
@@ -49,8 +49,7 @@
           <span style="color: white;">
             Already an account ?
           </span>
-          <a href="<%= render "devise/shared/links" %>" style="margin-left: 8px;">
-            Sign in
+          <a href="<%= render "devise/shared/links" %>
           </a>
         </div>
         <br>

@@ -1,53 +1,64 @@
-<div class="container">
-<h1>Carts</h1>
+<div class="container-login100">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+      <br>
+      <div class="login100-form validate-form">
+        <span class="login100-form-title p-b-37">
+          Cart
+        </span>
+        <br><br>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+          <tbody>
+            <% total = 0 %>
+            <% quantity = 0 %>
+              <% @carts.where(user_id: current_user.id).each do |cart| %>
+                <div class="container-fluid">
+                  <div class="row shadow-sm bg-white justify-content-center rounded-sm pb-3 pt-3 pl-3 mb-3 text-dark border pr-0 m-0">
+                    <div class="col-12 d-flex justify-content-between align-items-center text-black-50 m-0 p-0">
+                      <%= Item.find(cart.item_id.to_i).name %>
+                      <%= Item.find(cart.item_id.to_i).price %>$
+                      <%= link_to "", user_cart_path(current_user.id, cart.id), method: "delete", :class => "fas fa-times fa-2x spec mr-3" %>
+                    </div>
+                    </div>
+                  </div>
+                  <% quantity += 1 %>
+                <% total += Item.find(cart.item_id).price %>
+            <% end %>
 
-  <tbody>
-    <% total = 0 %>
-    <% quantity = 0 %>
-      <% @carts.where(user_id: current_user.id).each do |cart| %>
-        <div class="container-fluid">
-          <div class="row shadow-sm bg-white justify-content-center rounded-sm pb-3 pt-3 pl-3 mb-3 text-dark border pr-0 m-0">
             <div class="col-12 d-flex justify-content-between align-items-center text-black-50 m-0 p-0">
-              <%= Item.find(cart.item_id.to_i).name %>
-              <%= Item.find(cart.item_id.to_i).price %>$
-              <%= link_to "", user_cart_path(current_user.id, cart.id), method: "delete", :class => "fas fa-times fa-2x spec mr-3" %>
+              <h3> Quantity <%= quantity %> </h3>
+              <h2>Total <%= total %>$</h2>
             </div>
-            </div>
+            <div class="align">
+            <%= link_to "Add product", items_path, class: "btn" %>
+            <p></p>
+            <div style="text-align: right">
+            <%= form_tag orders_path, method: "post", remote: true do %>
+            <input name= "statut_id" value= 1 type="hidden">
+            <input name= "user_id" value= "<%= current_user.id %>" type="hidden">
+            <input name= "adress" value= "21 Rue Richard Lenoir" type="hidden">
+            <%= submit_tag "Order", class: "btn" %>
+            <% end %>
           </div>
-          <% quantity += 1 %>
-        <% total += Item.find(cart.item_id).price %>
-    <% end %>
-
-    <div class="col-12 d-flex justify-content-between align-items-center text-black-50 m-0 p-0">
-      <h2>Total <%= total %>$</h2>
-      <h3> Quantity <%= quantity %> </h3>
+        </div>
+            <script> stripe.redirectToCheckout({
+          // Make the id field from the Checkout Session creation API response
+          // available to this file, so you can provide it as parameter here
+          // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+          sessionId: '{{CHECKOUT_SESSION_ID}}'
+        }).then(function (result) {
+          // If `redirectToCheckout` fails due to a browser or network
+          // error, display the localized error message to your customer
+          // using `result.error.message`.
+        });  </script>
+          </tbody>
+        </table>
+        <br>
+      </div>
     </div>
-
-
-    <%= form_tag orders_path, method: "post", remote: true do %>
-    <input name= "statut_id" value= 1 type="hidden">
-    <input name= "user_id" value= "<%= current_user.id %>" type="hidden">
-    <input name= "adress" value= "21 Rue Richard Lenoir" type="hidden">
-    <%= submit_tag "Order" %>
-    <% end %>
-    
-    <script> stripe.redirectToCheckout({
-  // Make the id field from the Checkout Session creation API response
-  // available to this file, so you can provide it as parameter here
-  // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-  sessionId: '{{CHECKOUT_SESSION_ID}}'
-}).then(function (result) {
-  // If `redirectToCheckout` fails due to a browser or network
-  // error, display the localized error message to your customer
-  // using `result.error.message`.
-});  </script>
-  </tbody>
-</table>
-
+  </div>
