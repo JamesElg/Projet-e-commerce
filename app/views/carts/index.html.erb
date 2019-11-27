@@ -10,6 +10,7 @@
 
   <tbody>
     <% total = 0 %>
+    <% quantity = 0 %>
       <% @carts.where(user_id: current_user.id).each do |cart| %>
         <div class="container-fluid">
           <div class="row shadow-sm bg-white justify-content-center rounded-sm pb-3 pt-3 pl-3 mb-3 text-dark border pr-0 m-0">
@@ -20,13 +21,20 @@
             </div>
             </div>
           </div>
+          <% quantity += 1 %>
         <% total += Item.find(cart.item_id).price %>
     <% end %>
 
     <div class="col-12 d-flex justify-content-between align-items-center text-black-50 m-0 p-0">
       <h2>Total <%= total %>$</h2>
+      <h3> Quantity <%= quantity %> </h3>
     </div>
 
+<<<<<<< HEAD
+   <%=  %>
+
+  
+=======
     <%= form_tag orders_path, method: "post" do %>
 
       <article>
@@ -69,3 +77,4 @@
 <br>
 
 </div>
+>>>>>>> development
