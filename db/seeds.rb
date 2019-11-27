@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 10.times do 
 item = Item.create(:name => Faker::Space.nasa_space_craft, :description => Faker::Lorem.paragraph, :price => rand(10..500) + 0.99)
 puts item
 end
-
