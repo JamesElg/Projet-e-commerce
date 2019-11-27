@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Alice|Cutive|DM+Sans|Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css">
-
+  <script src="https://js.stripe.com/v3/"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= csrf_meta_tags %>
@@ -21,60 +21,60 @@
 
 <body>
 
-<h1 class="brand" style="color: black"> <%= link_to "Bryan Ajaro Gallery", items_path %></h1>
+  <h1 class="brand" style="color: black"> <%= link_to "Bryan Ajaro Gallery", items_path %></h1>
 
-<!-- Ajout d'une navbar -->
-<nav>
-  <a id="sticky" class="openbtn" onclick="openNav()"><i class="fas fa-chevron-right"></i></a>
-  <div id="mySidenav" class="sidenav">
-    <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
+  <!-- Ajout d'une navbar -->
+  <nav>
+    <a id="sticky" class="openbtn" onclick="openNav()"><i class="fas fa-chevron-right"></i></a>
+    <div id="mySidenav" class="sidenav">
+      <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
 
-    <% if user_signed_in? %>
-    <a href="<%= edit_user_registration_path %>">Profile</a>
-    <hr>
-    <a href="<%= items_path %>">Home</a>
-    <hr>
-    <a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a>
-    <hr>
-    <a href="contact.html">Contact</a>
+      <% if user_signed_in? %>
+      <a href="<%= edit_user_registration_path %>">Profile</a>
+      <hr>
+      <a href="<%= items_path %>">Home</a>
+      <hr>
+      <a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a>
+      <hr>
+      <a href="contact.html">Contact</a>
 
-    <% else %>
-    <a href="<%= new_user_session_path %>">Log in</a>
-    <hr>
-    <a href="<%= new_user_registration_path %>">Sign up</a>
-    <hr>
-    <a href="<%= items_path %>">Home</a>
-    <hr>
-    <a href="contact.html">Contact</a>
-    <% end %>
+      <% else %>
+      <a href="<%= new_user_session_path %>">Log in</a>
+      <hr>
+      <a href="<%= new_user_registration_path %>">Sign up</a>
+      <hr>
+      <a href="<%= items_path %>">Home</a>
+      <hr>
+      <a href="contact.html">Contact</a>
+      <% end %>
 
-<s></s>
+      <s></s>
       <div class="social">
-      <a href="https://www.facebook.com" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://www.instagram.com" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com" target="_blank">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://twitter.com" target="_blank">
-        <i class="fab fa-twitter"></i>
-      </a>
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
       </div>
-  </div>
-</nav>
+    </div>
+  </nav>
 
 
-<div class="myBtn d-flex justify-content-center align-items-center" onclick="topFunction()" id="myBtn" title="Go to top"><span><img src="assets/navigate-up-arrow.png" alt=""></span></div>
+  <div class="myBtn d-flex justify-content-center align-items-center" onclick="topFunction()" id="myBtn" title="Go to top"><span><img src="assets/navigate-up-arrow.png" alt=""></span></div>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-<%= yield %>
+  <%= yield %>
 
-<%= render 'layouts/footer'%>
+  <%= render 'layouts/footer'%>
 
 </body>
 <!-- Scripts JQuery -->
