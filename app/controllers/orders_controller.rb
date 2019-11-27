@@ -24,7 +24,10 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = Order.create(user_id: current_user.id, address: "21 Rue Richard Lenoir", statut_id: 1 )
+    stripe
+    join_order_to_carts
+    empty_cart
 
     respond_to do |format|
       if @order.save
@@ -69,14 +72,17 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:status, :adress)
+      params.require(:order).permit(:status, :adress, :user_id)
     end
 
     private
 
     def stripe 
+      puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      Stripe.api_key = 'sk_test_21TiEwcaDyLdlIZ5KpPKCh9o00TpyciS6q'
 
           session = Stripe::Checkout::Session.create(
+
       payment_method_types: ['card'],
       line_items: [{
         name: 'T-shirt',
@@ -89,8 +95,16 @@ class OrdersController < ApplicationController
       success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'https://example.com/cancel',
     )
-    )
-
     end
 
+    def join_order_to_carts
+
+    Cart.where(user_id: current_user.id).each do |cart| 
+      JoinOrderToCart.create(item_id: Item.find(cart.item_id.to_i).id  ,order_id: Order.last.id )
+      end
+    end
+
+    def empty_cart
+        Cart.where(user_id: current_user.id).destroy_all
+      end
 end
