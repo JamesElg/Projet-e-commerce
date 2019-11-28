@@ -50,14 +50,16 @@
             <%if i.photo.attached?%>
             <%= image_tag i.photo, alt: 'photo' %>
             <%else%>
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <a href="#"><img class="card-img-top" src="assets/shefta-shifa-tccP0BotaAA-unsplash.jpg" alt=""></a>
             <%end%>
           </div>
           <div class="back face">
             <h4><%= link_to i.name, i %></h4>
-            <p class="card-text"><%= i.description %></p>
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-            <p><%= i.price %> $</p>
+            <div class="row">
+              <p class="card-text"><%= i.description %></p>
+              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              <p><%= i.price %> $</p>
+            </div>
           </div>
           <% if current_user != nil %>
           <% if current_user.is_admin? %>
