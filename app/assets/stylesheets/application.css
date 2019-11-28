@@ -925,29 +925,19 @@ a:hover {
  flex-direction: row;
 }
 
-
-
-#####################################
-
-
-.box {
-	 width: 800px;
-	 margin: 10% auto;
-	 position: relative;
-}
  #contien {
 	 position: relative;
-	 margin: 30px;
+	 margin: 22px;
 	 width: 325px;
 	 height: 250px;
 	 float: left;
-	 perspective: 1000px;
+   justify-content: center;
 }
 
  #cardi {
 	 width: 100%;
 	 height: 100%;
-	 margin: 10%;
+   justify-content: center;
 	 transform-style: preserve-3d;
 	 transition: all 0.8s linear;
 	 box-shadow: 5px 5px 15px rgba(0, 0, 0, .3);
@@ -970,4 +960,13 @@ a:hover {
 	 padding: 10px;
 	 text-align: center;
 	 background: #f9f3e4;
+}
+
+.rank {
+  display:table-row;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
 }

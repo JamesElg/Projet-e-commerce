@@ -24,13 +24,10 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-<<<<<<< HEAD
-    @order = Order.new(user_id: current_user.id, address: "21 Rue Richard Lenoir", statut_id: 1 )
-=======
+
     @order = Order.new(order_params)
     join_order_to_carts
     empty_cart
->>>>>>> development
 
     respond_to do |format|
       if @order.save
