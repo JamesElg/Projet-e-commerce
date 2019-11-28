@@ -25,7 +25,6 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.create(user_id: current_user.id, address: "21 Rue Richard Lenoir", statut_id: 1 )
-    stripe
     join_order_to_carts
     empty_cart
 
@@ -68,6 +67,7 @@ class OrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
+      @session_id = stripe.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -78,7 +78,6 @@ class OrdersController < ApplicationController
     private
 
     def stripe 
-      puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
       Stripe.api_key = 'sk_test_21TiEwcaDyLdlIZ5KpPKCh9o00TpyciS6q'
 
           session = Stripe::Checkout::Session.create(
@@ -95,6 +94,7 @@ class OrdersController < ApplicationController
       success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'https://example.com/cancel',
     )
+    return session
     end
 
     def join_order_to_carts
