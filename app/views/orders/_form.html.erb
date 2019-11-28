@@ -12,19 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-    <%= input name= "statut" value= 1 type="hidden" %>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
   </div>
 
-  <div class="field">
-    <%= form.label :adress %>
-    <%= form.text_field :adress %>
-    <%= input name= "adress" value= "21 Rue Richard Lenoir" type="hidden" %>
-    <%= input name= "user_id" value= "<%= current_user.id %>" type="hidden" %>
-  </div>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :statut_id, value: 3 %>
+
 
   <div class="actions">
-    <%= form.submit %>
+  <%= button_to orders_path,
+    method: :post,
+    id: "pay_sca",
+    data: { disable_with: '<i class="fa fa-spinner fa-spin"></i>'.html_safe },
+    class: "btn1",
+    remote: true do  %>
+    <i style="float:left;color:black" id="notes-exists" class="fas fa-lock">&nbsp;Pay</i>
+    <% end %>
   </div>
 <% end %>

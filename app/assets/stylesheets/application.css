@@ -373,6 +373,29 @@ blockquote {
  background-color: #f1d6ab; /* Add a dark-grey background on hover */
 }
 
+.cartBtn {
+ cursor: crosshair;
+ position: fixed; /* Fixed/sticky position */
+ bottom: 100px; /* Place the button at the bottom of the page */
+ right: 40px; /* Place the button 30px from the right */
+ z-index: 3; /* Make sure it does not overlap */
+ border: none; /* Remove borders */
+ outline: none;
+ width: 10px;
+ height: 10px; /* Remove outline */
+ background-color: #ffe7d1; /* Set a background color */
+ color: black ; /* Text color */
+ padding: 20px; /* Some padding */
+ border-radius: 50px; /* Rounded corners */
+ transition: 0.8s;
+ box-shadow: 0 10px 30px 0px rgba(215,209,201, 1);
+}
+
+.cartBtn:hover {
+ cursor: crosshair;
+ background-color: #f1d6ab; /* Add a dark-grey background on hover */
+}
+
 .btn1 {
  cursor: crosshair;
  display: -webkit-box;
@@ -889,7 +912,7 @@ iframe {
 img {
   object-fit: cover;
   width: 100%;
-  height: 20vh;
+  height: 200px;
   vertical-align: middle;
   border-style: none;
 
@@ -900,4 +923,52 @@ a:hover {
   text-decoration: none!important;
   color: #8a00d4!important;
  flex-direction: row;
+}
+
+
+
+#####################################
+
+
+.box {
+	 width: 800px;
+	 margin: 10% auto;
+	 position: relative;
+}
+ #contien {
+	 position: relative;
+	 margin: 30px;
+	 width: 325px;
+	 height: 200px;
+	 float: left;
+	 perspective: 1000px;
+}
+
+ #cardi {
+	 width: 100%;
+	 height: 100%;
+	 margin: 10%;
+	 transform-style: preserve-3d;
+	 transition: all 0.8s linear;
+	 box-shadow: 5px 5px 15px rgba(0, 0, 0, .3);
+}
+ #cardi:hover {
+	 transform: rotateY(180deg);
+	 box-shadow: -5px 5px 15px rgba(0, 0, 0, .3);
+}
+
+ .face {
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+	 backface-visibility: hidden;
+}
+ .back {
+	 display: block;
+	 transform: rotateY(180deg);
+	 box-sizing: border-box;
+	 padding: 10px;
+	 text-align: center;
+	 opacity: 0.7;
+	 background: #f9f3e4;
 }
