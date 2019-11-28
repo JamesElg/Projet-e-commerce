@@ -19,21 +19,22 @@
               <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "Last name" %>
             </div>
           </div>
+          <br>
 
-          <div class="align">
             <div class="field">
               <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control", placeholder: "Phone number" %>
             </div>
+            <br>
+
             <div class="field">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
             </div>
-          </div>
+            <br>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
           <% end %>
 
-          <div class="align">
             <div class="field">
               <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder:"(leave blank if you don't want to change it)" %>
               <% if @minimum_password_length %>
@@ -43,8 +44,7 @@
             <div class="field">
               <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
             </div>
-          </div>
-
+            <br>
           <div class="field">
             <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "(we need your current password to confirm your changes)" %>
           </div>
@@ -52,7 +52,7 @@
 
           <div class="text-center">
             <div class="align">
-              <%= link_to "Back", :back, class: "btn" %>
+              <%= link_to "Back", :back, class: "btn1" %>
               <div class="actions">
                 <%= f.submit "Update", class: "btn" %>
                 <% end %>

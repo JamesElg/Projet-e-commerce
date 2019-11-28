@@ -25,6 +25,11 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
         </div><br>
 
+        <input type="checkbox">
+        <small> I confirm that I accept the membership policy and that I have read and understood the privacy policy.</small><br>
+        <input type="checkbox">
+        <small> Subscribe to our newsletter</small><br>
+
         <div class="container-login100-form-btn">
           <button class="animatedButton" type="submit" style="vertical-align:middle"><span>Join us</span></button>
         </div>
@@ -47,9 +52,9 @@
         </div>
         <div class="container-login100">
           <span style="color: white;">
-            Already an account ?
+            Already an account ? &nbsp;&nbsp;
           </span>
-          <a href="<%= render "devise/shared/links" %>
+          <a<%= render "devise/shared/links" %>
           </a>
         </div>
         <br>
