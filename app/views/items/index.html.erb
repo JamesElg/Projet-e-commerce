@@ -60,7 +60,7 @@
               <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               <p><%= i.price %> $</p>
             </div>
-            <% if current_user != nil %>
+            <% if user_signed_in? %>
             <% if current_user.is_admin? %>
             <%= form_tag item_path(i.id), method: "put", multipart: true do %>
             <%= file_field_tag :photo %>
