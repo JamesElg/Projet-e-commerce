@@ -13,8 +13,12 @@
 
   <div class="field">
     <%= form.label :address %>
-    <%= form.text_field :address, class:'form-control' %>
+    <%= form.text_field :number, class:'form-control', placeholder:'N°' %>
+    <%= form.text_field :street, class:'form-control', placeholder:'Street' %>
+    <%= form.text_field :zip_code, class:'form-control', placeholder:'Zip Code' %>
+    <%= form.text_field :city, class:'form-control', placeholder:'City' %>
   </div>
+
   <br>
   <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :statut_id, value: 3 %>
