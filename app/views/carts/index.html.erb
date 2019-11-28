@@ -37,26 +37,9 @@
             <div class="align">
               <%= link_to "Add +", items_path, class: "btn1" %>
               <p></p>
-                <%= button_to orders_path,
-                method: :post,
-                id: "pay_sca",
-                data: { disable_with: '<i class="fa fa-spinner fa-spin"></i>'.html_safe },
-                class: "btn1",
-                remote: true do  %>
-                 <i style="float:left;color:black" id="notes-exists" class="fas fa-lock">&nbsp;Pay</i>
-                <% end %>
+                <%= link_to 'Confirm',new_order_path %>
             </div>
 
-            <script> stripe.redirectToCheckout({
-          // Make the id field from the Checkout Session creation API response
-          // available to this file, so you can provide it as parameter here
-          // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-          sessionId: '{{CHECKOUT_SESSION_ID}}'
-        }).then(function (result) {
-          // If `redirectToCheckout` fails due to a browser or network
-          // error, display the localized error message to your customer
-          // using `result.error.message`.
-        });  </script>
           </tbody>
         </table>
         <br>

@@ -24,8 +24,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.create(user_id: current_user.id, address: "21 Rue Richard Lenoir", statut_id: 1 )
-    stripe
+    @order = Order.new(order_params)
     join_order_to_carts
     empty_cart
 
@@ -68,33 +67,34 @@ class OrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
+      @session_id = stripe.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:status, :adress, :user_id)
+      params.require(:order).permit(:statut_id, :address, :user_id)
     end
 
     private
 
     def stripe 
-      puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
       Stripe.api_key = 'sk_test_21TiEwcaDyLdlIZ5KpPKCh9o00TpyciS6q'
 
           session = Stripe::Checkout::Session.create(
 
       payment_method_types: ['card'],
       line_items: [{
-        name: 'T-shirt',
+        name: 'Bryan Ajaro Gallery',
         description: 'Comfortable cotton t-shirt',
         images: ['https://example.com/t-shirt.png'],
         amount: 500,
         currency: 'eur',
         quantity: 1,
       }],
-      success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+      success_url: 'https://projet-e-commerce.herokuapp.com/',
       cancel_url: 'https://example.com/cancel',
     )
+    return session
     end
 
     def join_order_to_carts
