@@ -70,7 +70,9 @@
     </div>
   </nav>
 
-  <div class="cartBtn d-flex justify-content-center align-items-center" onclick="" id="cartBtn" title="See your basket"><span><i class="fas fa-shopping-bag"></i></span></div>
+  <div class="cartBtn d-flex justify-content-center align-items-center">
+    <a href="<%= user_carts_path(:user_id => current_user.id) %>" data-method="get">  <span><i class="fas fa-shopping-bag"></i></span></a>
+  </div>
 
   <div class="myBtn d-flex justify-content-center align-items-center" onclick="topFunction()" id="myBtn" title="Go to top"><span>^</span></div>
 
