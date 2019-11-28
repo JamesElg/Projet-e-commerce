@@ -26,8 +26,6 @@ class OrdersController < ApplicationController
   def create
 
     @order = Order.new(order_params)
-    join_order_to_carts
-    empty_cart
 
     respond_to do |format|
       if @order.save
@@ -79,22 +77,31 @@ class OrdersController < ApplicationController
     private
 
     def stripe
-      Stripe.api_key = 'sk_test_21TiEwcaDyLdlIZ5KpPKCh9o00TpyciS6q'
 
+      Stripe.api_key = 'sk_test_21TiEwcaDyLdlIZ5KpPKCh9o00TpyciS6q'
+      array_master =[]
+
+            Cart.all.where(user_id: current_user.id).each do |i|
+
+array_master << {
+        name: Item.find(i.item_id).name,
+        description: Item.find(i.item_id).description,
+        images: ['https://example.com/t-shirt.png'],
+        amount: Item.find(i.item_id).price.to_i * 100,
+        currency: 'eur',
+        quantity: 1,
+      }
+    end
           session = Stripe::Checkout::Session.create(
 
       payment_method_types: ['card'],
-      line_items: [{
-        name: 'Bryan Ajaro Gallery',
-        description: 'Comfortable cotton t-shirt',
-        images: ['https://example.com/t-shirt.png'],
-        amount: 500,
-        currency: 'eur',
-        quantity: 1,
-      }],
+      line_items: array_master,
       success_url: 'https://projet-e-commerce.herokuapp.com/',
       cancel_url: 'https://example.com/cancel',
     )
+
+Cart.all.where(user_id: current_user.id).destroy_all
+
     return session
     end
 

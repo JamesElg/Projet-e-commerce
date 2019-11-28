@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     var = item_params
     puts var
     puts params[:name]
@@ -32,7 +31,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to admin_root_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
