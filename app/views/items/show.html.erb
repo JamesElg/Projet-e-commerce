@@ -33,6 +33,7 @@
             </div>
 					</div>
 					<div class="col mb-3">
+						<% if user_signed_in? %>
 						<% if current_user.is_admin? %>
 						<%= link_to 'Edit', edit_item_path(@item), class:'btn btn m-0' %>
 						<% end %>
@@ -41,6 +42,7 @@
 						<%= link_to 'Add to Cart', new_user_session_path, class:'btn btn m-0' %>
 						<% else %>
 						<%= link_to 'Add to Cart', user_cart_path(current_user.id,params[:id]), method: :put ,  class:'btn btn m-0' %>
+						<% end %>
 						<% end %>
 					</div>
 				</div>
