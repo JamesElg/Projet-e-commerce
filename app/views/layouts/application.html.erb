@@ -31,7 +31,7 @@
       <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
 
       <% if user_signed_in? %>
-      <a href="/mon_profil">Profile</a>
+      <a href="<%= edit_user_registration_path %>">Profile</a>
       <hr>
       <a href="/mon_panier" data-method="get">My Cart</a>
       <hr>
