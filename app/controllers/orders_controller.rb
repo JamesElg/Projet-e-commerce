@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
 
-    @order = Order.new(user_id: current_user.id, address: "21 Rue Richard Lenoir" )
+    @order = Order.new(order_params)
 
     respond_to do |format|
       if @order.save
@@ -81,7 +81,7 @@ class OrdersController < ApplicationController
       Stripe.api_key = 'sk_test_21TiEwcaDyLdlIZ5KpPKCh9o00TpyciS6q'
       array_master =[]
 
-            Cart.all.where(user_id: current_user.id).each do |i| 
+            Cart.all.where(user_id: current_user.id).each do |i|
 
 array_master << {
         name: Item.find(i.item_id).name,
