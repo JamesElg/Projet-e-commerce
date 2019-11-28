@@ -1,5 +1,13 @@
-<h1>Your Shipping Informations</h1>
-
-<%= render 'form', order: @order %>
-
-<%= link_to 'Back', orders_path %>
+<div class="container-login100">
+    <div class="md-wrap p-l-55 p-r-55 p-t-80 p-b-30">
+      <br>
+      <div class="login100-form validate-form">
+        <span class="login100-form-title p-b-37">
+          Your Shipping Informations
+        </span>
+        <br><br>
+        <%= render 'form', order: @order %>
+      </div>
+        <br>
+    </div>
+</div>

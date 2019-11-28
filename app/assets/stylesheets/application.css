@@ -534,6 +534,19 @@ iframe {
  -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
 }
 
+.md-wrap {
+ width: 45%;
+ background: #979797;
+ border-radius: 10px;
+ overflow: hidden;
+ opacity: 80%;
+
+ box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
+ -moz-box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
+ -webkit-box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
+ -o-box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
+ -ms-box-shadow: 0 3px 20px 0px rgba(151,151,151, 1);
+}
 
 /*==================================================================
 [ Form ]*/
@@ -905,6 +918,14 @@ iframe {
   flex-direction: row;
   margin: 15px;
   justify-content: space-around;
+  align-content: center
+
+}
+
+.align1 {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
   align-content: center
 
 }
