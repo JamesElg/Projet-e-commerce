@@ -17,10 +17,17 @@
   </div>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= form.hidden_field :statut_id, value: 2 %>
+  <%= form.hidden_field :statut_id, value: 3 %>
 
 
   <div class="actions">
-    <%= form.submit %>
+  <%= button_to orders_path,
+    method: :post,
+    id: "pay_sca",
+    data: { disable_with: '<i class="fa fa-spinner fa-spin"></i>'.html_safe },
+    class: "btn1",
+    remote: true do  %>
+    <i style="float:left;color:black" id="notes-exists" class="fas fa-lock">&nbsp;Pay</i>
+    <% end %>
   </div>
 <% end %>

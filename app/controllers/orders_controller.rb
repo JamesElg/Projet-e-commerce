@@ -24,9 +24,13 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+<<<<<<< HEAD
+    @order = Order.new(user_id: current_user.id, address: "21 Rue Richard Lenoir", statut_id: 1 )
+=======
     @order = Order.new(order_params)
     join_order_to_carts
     empty_cart
+>>>>>>> development
 
     respond_to do |format|
       if @order.save
@@ -77,7 +81,7 @@ class OrdersController < ApplicationController
 
     private
 
-    def stripe 
+    def stripe
       Stripe.api_key = 'sk_test_21TiEwcaDyLdlIZ5KpPKCh9o00TpyciS6q'
 
           session = Stripe::Checkout::Session.create(
@@ -97,14 +101,4 @@ class OrdersController < ApplicationController
     return session
     end
 
-    def join_order_to_carts
-
-    Cart.where(user_id: current_user.id).each do |cart| 
-      JoinOrderToCart.create(item_id: Item.find(cart.item_id.to_i).id  ,order_id: Order.last.id )
-      end
-    end
-
-    def empty_cart
-        Cart.where(user_id: current_user.id).destroy_all
-      end
 end
