@@ -71,6 +71,18 @@ a .fab:hover {
  text-decoration: black;
 }
 
+a .far {
+ cursor: crosshair;
+ color: #fff;
+ text-decoration: none;
+}
+
+a .far:hover {
+ cursor: crosshair;
+ color: #8a00d4;
+ text-decoration: black;
+}
+
 .social {
  cursor: crosshair;
  display: flex;
@@ -148,7 +160,7 @@ a .fab:hover {
 
 .sidenav hr {
  cursor: crosshair;
- border-top: 1px solid #ffddcc;
+ border-top: 1px solid #fff;
  border-bottom: 0px;
 }
 
@@ -247,7 +259,6 @@ blockquote {
  justify-content: center;
  align-items: center;
  padding: 0 25px;
- margin: auto;
  width: 200px;
  height: 50px;
  background-color: #ffe7d1;
@@ -362,6 +373,49 @@ blockquote {
  background-color: #f1d6ab; /* Add a dark-grey background on hover */
 }
 
+.btn1 {
+ cursor: crosshair;
+ display: -webkit-box;
+ display: -webkit-flex;
+ display: -moz-box;
+ display: -ms-flexbox;
+ display: inline-flex;
+ justify-content: center;
+ align-items: center;
+ padding: 0 25px;
+ margin: auto;
+ width: 100px;
+ height: 50px;
+ background-color: #fff;
+ border-radius: 25px;
+
+ font-family: 'DM Sans', sans-serif;
+ font-size: 18px;
+ color: #000000;
+ line-height: 1.2;
+ text-decoration: none;
+
+ -webkit-transition: all 0.4s;
+ -o-transition: all 0.4s;
+ -moz-transition: all 0.4s;
+ transition: all 0.4s;
+
+ box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.5);
+ -moz-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.5);
+ -webkit-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.5);
+ -o-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.5);
+ -ms-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.5);
+}
+
+.btn1:hover {
+ background-color: #f1d6ab;
+ box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
+ -moz-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
+ -webkit-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
+ -o-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
+ -ms-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
+}
+
 /*---------------------------------------------*/
 input {
 	outline: none;
@@ -389,6 +443,7 @@ textarea:-ms-input-placeholder { color: #4b2354;}
 
 /*---------------------------------------------*/
 button {
+  cursor: crosshair;
 	outline: none !important;
 	border: none;
 	background: transparent;
@@ -688,7 +743,7 @@ iframe {
  width: 50px;
  height: 50px;
  border-radius: 50%;
- background-color: #fff;
+ background-color: #0000;
  text-decoration: none;
  margin: 5px;
  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
