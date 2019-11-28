@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   has_many :items, through: :join_order_to_carts
   belongs_to :user
 
-  after_create :join_order_to_carts, :thanks_order_send, :admin_order_send, :empty_cart
+  after_create :join_order_to_carts, :thanks_order_send, :admin_order_send,
 
    def thanks_order_send
      OrderMailer.thanks_order_email(self).deliver_now
