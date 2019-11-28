@@ -4,7 +4,7 @@ Confirmation de votre commande !
 <%= @user.first_name %> Merci de votre confiance. <br> Nous vous confirmons l'envoi de vos articles :.
 
 <% @items.each do |item| %>
-  - item.name
+  - <%= item.name %>
 <% end %>
 
 

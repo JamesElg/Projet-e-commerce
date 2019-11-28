@@ -24,9 +24,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.create(user_id: current_user.id, address: "21 Rue Richard Lenoir", statut_id: 1 )
-    join_order_to_carts
-    empty_cart
+    @order = Order.new(user_id: current_user.id, address: "21 Rue Richard Lenoir", statut_id: 1 )
 
     respond_to do |format|
       if @order.save
@@ -77,34 +75,24 @@ class OrdersController < ApplicationController
 
     private
 
-    def stripe 
+    def stripe
       Stripe.api_key = 'sk_test_21TiEwcaDyLdlIZ5KpPKCh9o00TpyciS6q'
 
           session = Stripe::Checkout::Session.create(
 
-      payment_method_types: ['card'],
-      line_items: [{
-        name: 'T-shirt',
-        description: 'Comfortable cotton t-shirt',
-        images: ['https://example.com/t-shirt.png'],
-        amount: 500,
-        currency: 'eur',
-        quantity: 1,
-      }],
-      success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'https://example.com/cancel',
-    )
-    return session
+            payment_method_types: ['card'],
+            line_items: [{
+              name: 'T-shirt',
+              description: 'Comfortable cotton t-shirt',
+              images: ['https://example.com/t-shirt.png'],
+              amount: 500,
+              currency: 'eur',
+              quantity: 1,
+            }],
+            success_url: 'https://example.com/success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url: 'https://example.com/cancel',
+          )
+      return session
     end
 
-    def join_order_to_carts
-
-    Cart.where(user_id: current_user.id).each do |cart| 
-      JoinOrderToCart.create(item_id: Item.find(cart.item_id.to_i).id  ,order_id: Order.last.id )
-      end
-    end
-
-    def empty_cart
-        Cart.where(user_id: current_user.id).destroy_all
-      end
 end
