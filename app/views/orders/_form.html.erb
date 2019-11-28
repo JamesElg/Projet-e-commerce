@@ -13,10 +13,11 @@
 
   <div class="field">
     <%= form.label :address %>
-    <%= form.text_field :number, class:'form-control', placeholder:'N°' %>
-    <%= form.text_field :street, class:'form-control', placeholder:'Street' %>
-    <%= form.text_field :zip_code, class:'form-control', placeholder:'Zip Code' %>
-    <%= form.text_field :city, class:'form-control', placeholder:'City' %>
+    <%= form.text_field :address, class:'form-control', placeholder:'N°, Street, Zip, City, Country' %>
+    <%= form.hidden_field :number, class:'form-control', placeholder:'N°' %>
+    <%= form.hidden_field :street, class:'form-control', placeholder:'Street' %>
+    <%= form.hidden_field :zip_code, class:'form-control', placeholder:'Zip Code' %>
+    <%= form.hidden_field :city, class:'form-control', placeholder:'City' %>
   </div>
 
   <br>
@@ -24,8 +25,7 @@
   <%= form.hidden_field :statut_id, value: 3 %>
 
   <div class="align1">
-    <%= link_to 'Back', orders_path, class:'btn1' %>
-    <div align="right">
+    <%= link_to 'Back', orders_path, class:'btn2' %>
       <div class="actions">
         <%= button_to orders_path,
         method: :post,
@@ -36,6 +36,5 @@
         <i style="float:left;color:black" id="notes-exists" class="fas fa-lock">&nbsp;Pay</i>
         <% end %>
       </div>
-    </div>
   </div>
 <% end %>

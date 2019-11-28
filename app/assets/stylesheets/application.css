@@ -439,6 +439,49 @@ blockquote {
  -ms-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
 }
 
+.btn2 {
+ cursor: crosshair;
+ display: -webkit-box;
+ display: -webkit-flex;
+ display: -moz-box;
+ display: -ms-flexbox;
+ display: inline-flex;
+ justify-content: center;
+ align-items: center;
+ padding: 0 25px;
+ margin: 0 10px;
+ width: 100px;
+ height: 50px;
+ background-color: #fff;
+ border-radius: 25px;
+
+ font-family: 'DM Sans', sans-serif;
+ font-size: 18px;
+ color: #000000;
+ line-height: 1.2;
+ text-decoration: none;
+
+ -webkit-transition: all 0.4s;
+ -o-transition: all 0.4s;
+ -moz-transition: all 0.4s;
+ transition: all 0.4s;
+
+ box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.5);
+ -moz-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.5);
+ -webkit-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.5);
+ -o-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.5);
+ -ms-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.5);
+}
+
+.btn2:hover {
+ background-color: #f1d6ab;
+ box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
+ -moz-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
+ -webkit-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
+ -o-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
+ -ms-box-shadow: 0 10px 30px 0px rgba(255,255,255, 0.8);
+}
+
 /*---------------------------------------------*/
 input {
 	outline: none;
@@ -926,8 +969,8 @@ iframe {
   display: flex;
   flex-direction: row;
   margin: 15px;
-  align-content: center
-
+  align-content: center;
+  justify-content:center;
 }
 
 img {
