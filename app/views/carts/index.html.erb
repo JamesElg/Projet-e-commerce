@@ -37,14 +37,7 @@
             <div class="align">
               <%= link_to "Add +", items_path, class: "btn1" %>
               <p></p>
-                <%= button_to orders_path,
-                method: :post,
-                id: "pay_sca",
-                data: { disable_with: '<i class="fa fa-spinner fa-spin"></i>'.html_safe },
-                class: "btn1",
-                remote: true do  %>
-                 <i style="float:left;color:black" id="notes-exists" class="fas fa-lock">&nbsp;Pay</i>
-                <% end %>
+                <%= link_to 'Confirm',new_order_path %>
             </div>
 
           </tbody>
